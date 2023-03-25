@@ -2,11 +2,11 @@ package com.practice.board.global.error;
 
 import com.practice.board.global.error.exception.BusinessException;
 import com.practice.board.global.error.exception.ErrorCode;
+import javax.validation.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestControllerAdvice
@@ -22,7 +22,17 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.valueOf(errorCode.getStatusCode()));
     }
 
-    // 그 외 처리되지 않은 에러들
+    // validation 에러
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ErrorResponse> handleConstraintViolationException(ConstraintViolationException e) {
+
+        ErrorCode errorCode = ErrorCode.BAD_REQUEST;
+        ErrorResponse response = ErrorResponse.of(errorCode, errorCode.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.valueOf(errorCode.getStatusCode()));
+    }
+
+    // 그 외 에러들
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleException(Exception e) {
 

@@ -22,6 +22,8 @@ public enum ErrorCode {
     BOARD_NOT_FOUND(404, "Board not found"),
     BOARD_WRITER_MISMATCH(403, "Board writer mismatch"),
 
+    // general
+    BAD_REQUEST(400, "Bad request"),
     INTERNAL_SERVER_ERROR(500, "Internal server error");
 
     private final int statusCode;

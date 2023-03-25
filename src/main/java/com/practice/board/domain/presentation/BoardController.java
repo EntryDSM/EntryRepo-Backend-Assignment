@@ -5,11 +5,13 @@ import com.practice.board.domain.presentation.dto.response.BoardIdResponse;
 import com.practice.board.domain.presentation.dto.response.BoardResponse;
 import com.practice.board.domain.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.*;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
+@Validated
 @RestController
 @RequiredArgsConstructor
 public class BoardController {
