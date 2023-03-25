@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${URL}
+    username: ${USERNAME}
+    password: ${PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    defer-datasource-initialization: true
+  redis:
+    port: ${REDIS-PORT}
+    host: ${REDIS-HOST}
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${CLIENT-ID}
+            client-secret: ${CLIENT-SECRET}
+            scope: profile,email
+  mvc:
+    throw-exception-if-no-handler-found: true
+    dispatch-options-request: false
+  web:
+    resources:
+      add-mappings: false
+
+jwt:
+  header: ${HEADER}
+  prefix : ${PREFIX}
+  secret: ${JWT-SECRET}
+  access: ${TOKEN-EXP}
+  refresh: ${REFRESH-EXP}
+
+logging:
+  level:
+    com.example : DEBUG
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
