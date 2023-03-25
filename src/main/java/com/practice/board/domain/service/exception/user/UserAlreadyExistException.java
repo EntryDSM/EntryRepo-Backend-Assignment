@@ -1,4 +1,4 @@
-package com.practice.board.domain.exception.user;
+package com.practice.board.domain.service.exception.user;
 
 import com.practice.board.global.error.exception.BusinessException;
 import com.practice.board.global.error.exception.ErrorCode;

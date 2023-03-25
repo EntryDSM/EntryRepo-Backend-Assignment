@@ -1,11 +1,11 @@
-package com.practice.board.domain.facade;
+package com.practice.board.domain.service.facade;
 
 import com.practice.board.domain.persistence.User;
 import com.practice.board.domain.persistence.UserRepository;
 import lombok.*;
 import org.springframework.security.core.context.*;
 import org.springframework.stereotype.*;
-import com.practice.board.domain.exception.user.UserNotFoundException;
+import com.practice.board.domain.service.exception.user.UserNotFoundException;
 
 /**
  * 공통 로직을 묶기 위한 컨포넌트

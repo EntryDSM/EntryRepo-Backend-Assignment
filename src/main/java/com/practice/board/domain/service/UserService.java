@@ -2,7 +2,10 @@ package com.practice.board.domain.service;
 
 import com.practice.board.domain.presentation.dto.request.*;
 import com.practice.board.domain.presentation.dto.response.*;
-import com.practice.board.domain.exception.user.PasswordMismatchException;
+import com.practice.board.domain.service.exception.user.PasswordMismatchException;
+import com.practice.board.domain.service.exception.board.*;
+import com.practice.board.domain.service.exception.user.*;
+import com.practice.board.domain.service.facade.*;
 import lombok.*;
 import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
@@ -12,14 +15,14 @@ import org.springframework.transaction.annotation.*;
 public class UserService {
 
     private final com.practice.board.domain.persistence.UserRepository userRepository;
-    private final com.practice.board.domain.facade.UserFacade userFacade;
+    private final UserFacade userFacade;
     private final com.practice.board.global.security.jwt.JwtProperties jwtProperties;
     private final com.practice.board.global.security.jwt.JwtTokenProvider jwtTokenProvider;
 
     public void register(SignUpRequest request) {
 
         if (userRepository.existsByUsername(request.getUsername())) {
-            throw com.practice.board.domain.exception.user.UserAlreadyExistException.EXCEPTION;
+            throw UserAlreadyExistException.EXCEPTION;
         }
 
         userRepository.save(
@@ -35,7 +38,7 @@ public class UserService {
     public TokenResponse login(LoginRequest request) {
 
         com.practice.board.domain.persistence.User user = userRepository.findByUsername(request.getUsername())
-            .orElseThrow(() -> com.practice.board.domain.exception.user.UserNotFoundException.EXCEPTION);
+            .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
         if (request.getPassword() != user.getPassword()) {
             throw PasswordMismatchException.EXCEPTION;
@@ -61,7 +64,7 @@ public class UserService {
         com.practice.board.domain.persistence.User user = userFacade.currentUser();
 
         if (user.getPassword() == null) {
-            throw com.practice.board.domain.exception.board.BoardWriterMismatchException.EXCEPTION;
+            throw BoardWriterMismatchException.EXCEPTION;
         }
 
         if (request.getOldPassword() != user.getPassword()) {

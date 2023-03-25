@@ -2,7 +2,7 @@ package com.practice.board.global.security.auth;
 
 import com.practice.board.domain.persistence.User;
 import com.practice.board.domain.persistence.UserRepository;
-import com.practice.board.domain.exception.user.UserNotFoundException;
+import com.practice.board.domain.service.exception.user.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
