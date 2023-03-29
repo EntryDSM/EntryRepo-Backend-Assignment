@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface BoardRepository extends JpaRepository<com.practice.board.domain.persistence.Board, Long> {
+public interface BoardRepository extends JpaRepository<Board, Long> {
 
-    List<com.practice.board.domain.persistence.Board> findByUserId(Long userId);
+    List<Board> findByUserId(Long userId);
 
-    List<com.practice.board.domain.persistence.Board> findByTitleContaining(String title);
+    List<Board> findByTitleContaining(String title);
 }

@@ -1,5 +1,6 @@
 package com.practice.board.domain.presentation.dto.response;
 
+import com.practice.board.domain.persistence.User;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -9,7 +10,7 @@ public class UserInfoResponse {
 
     private String username;
 
-    public UserInfoResponse(com.practice.board.domain.persistence.User user){
+    public UserInfoResponse(User user){
         username = user.getUsername();
     }
 }
