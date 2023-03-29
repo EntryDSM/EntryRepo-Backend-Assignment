@@ -8,7 +8,7 @@ import org.springframework.stereotype.*;
 import com.practice.board.domain.service.exception.user.UserNotFoundException;
 
 /**
- * 공통 로직을 묶기 위한 컨포넌트
+ * 공통 로직을 묶기 위한 컴포넌트
  */
 @RequiredArgsConstructor
 @Component

@@ -25,10 +25,10 @@ public class ErrorResponse {
                 .build();
     }
 
-    public static ErrorResponse of(int errorCode, String description) {
+    public static ErrorResponse of(int statusCode, String description) {
         return ErrorResponse.builder()
                 .message(description)
-                .status(errorCode)
+                .status(statusCode)
                 .timestamp(LocalDateTime.now())
                 .description(description)
                 .build();

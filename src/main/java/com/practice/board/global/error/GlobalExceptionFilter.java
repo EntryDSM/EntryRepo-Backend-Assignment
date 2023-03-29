@@ -34,10 +34,10 @@ public class GlobalExceptionFilter extends OncePerRequestFilter {
         }
     }
 
-    private void writeErrorResponse(HttpServletResponse response, int response1, ErrorResponse response2) throws IOException {
-        response.setStatus(response1);
+    private void writeErrorResponse(HttpServletResponse response, int statusCode, ErrorResponse errorResponse) throws IOException {
+        response.setStatus(statusCode);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        objectMapper.writeValue(response.getWriter(), response2);
+        objectMapper.writeValue(response.getWriter(), errorResponse);
     }
 }
