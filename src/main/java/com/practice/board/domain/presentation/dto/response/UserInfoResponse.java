@@ -1,11 +1,11 @@
 package com.practice.board.domain.presentation.dto.response;
 
 import com.practice.board.domain.persistence.User;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 @Getter
 @Builder
+@AllArgsConstructor
 public class UserInfoResponse {
 
     private String username;
