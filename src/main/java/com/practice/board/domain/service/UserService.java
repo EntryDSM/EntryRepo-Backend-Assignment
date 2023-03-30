@@ -23,7 +23,7 @@ public class UserService {
     private final JwtProperties jwtProperties;
     private final JwtTokenProvider jwtTokenProvider;
 
-    public void register(SignUpRequest request) {
+    public void signup(SignUpRequest request) {
 
         if (userRepository.existsByUsername(request.getUsername())) {
             throw UserAlreadyExistException.EXCEPTION;
@@ -44,7 +44,7 @@ public class UserService {
         User user = userRepository.findByUsername(request.getUsername())
             .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
-        if (request.getPassword() != user.getPassword()) {
+        if (!request.getPassword().equals(user.getPassword())) {
             throw PasswordMismatchException.EXCEPTION;
         }
 
@@ -71,7 +71,7 @@ public class UserService {
             throw BoardWriterMismatchException.EXCEPTION;
         }
 
-        if (request.getOldPassword() != user.getPassword()) {
+        if (!request.getOldPassword().equals(user.getPassword())) {
             throw PasswordMismatchException.EXCEPTION;
         }
 

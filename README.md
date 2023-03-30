@@ -42,3 +42,4 @@
 - qualified name으로 되어있었던 클래스 import 처리
 - AllArgumentConstructor 누락된 부분 수정
 - .gitignore 설정
+- password 비교 equals 동등성 연산
